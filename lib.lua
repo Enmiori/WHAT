@@ -1664,15 +1664,6 @@ function library:Init()
 		self.base.Parent = game:GetService"CoreGui"
 	end
 	
-	
-	self.cursor = self.cursor or self:Create("Frame", {
-		ZIndex = 10000,
-		AnchorPoint = Vector2.new(0, 0),
-		Size = UDim2.new(0, 1, 0, 1),
-		BackgroundColor3 = Color3.fromRGB(255, 255, 255),
-		Parent = self.base
-	})
-	
 	for _, window in next, self.windows do
 		if window.canInit and not window.init then
 			window.init = true
