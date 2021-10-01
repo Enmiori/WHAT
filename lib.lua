@@ -1713,7 +1713,7 @@ end)
 inputService.InputChanged:connect(function(input)
 	if input.UserInputType == Enum.UserInputType.MouseMovement and library.cursor then
 		local mouse = inputService:GetMouseLocation() + Vector2.new(0, -36)
-		library.cursor.Position = UDim2.new(0, mouse.X - 2000, 0, mouse.Y - 2000)
+		library.cursor.Position = UDim2.new(0, mouse.X - 5, 0, mouse.Y - 5)
 	end
 	if input == dragInput and dragging then
 		update(input)
