@@ -1634,14 +1634,6 @@ local function getFnctions(parent)
 			loadOptions(self, parent)
 		end
 		
-		self.cursor = self.cursor or self:Create("Frame", {
-			ZIndex = 10000,
-			AnchorPoint = Vector2.new(0, 0),
-			Size = UDim2.new(0, 1, 0, 1),
-			BackgroundColor3 = Color3.fromRGB(255, 255, 255),
-			Parent = self.base
-		})
-	
 		return option
 	end
 end
@@ -1671,6 +1663,15 @@ function library:Init()
 		self.base.Name = tostring(math.random())
 		self.base.Parent = game:GetService"CoreGui"
 	end
+	
+	
+	self.cursor = self.cursor or self:Create("Frame", {
+		ZIndex = 100,
+		AnchorPoint = Vector2.new(0, 0),
+		Size = UDim2.new(0, 5, 0, 5),
+		BackgroundColor3 = Color3.fromRGB(255, 255, 255),
+		Parent = self.base
+	})
 	
 	for _, window in next, self.windows do
 		if window.canInit and not window.init then
@@ -1710,7 +1711,13 @@ inputService.InputBegan:connect(function(input)
 end)
 
 inputService.InputChanged:connect(function(input)
-	
+	if input.UserInputType == Enum.UserInputType.MouseMovement and library.cursor then
+		local mouse = inputService:GetMouseLocation() + Vector2.new(0, -36)
+		library.cursor.Position = UDim2.new(0, 0, 0, 0)
+	end
+	if input == dragInput and dragging then
+		update(input)
+	end
 end)
 
 return library
