@@ -30,7 +30,7 @@ if type(getconnections) ~= 'function' then return fail('Unsupported exploit (mis
 if type(getloadedmodules) ~= 'function' then return fail('Unsupported exploit (misssing "getloadedmodules")') end
 if type(getgc) ~= 'function' then return fail('Unsupported exploit (misssing "getgc")') end
 
-local library = urlLoad("https://raw.githubusercontent.com/Enmiori/WHAT/main/lib.lua")
+local library = urlLoad("https://raw.githubusercontent.com/AikaV3rm/UiLib/master/Lib.lua")
 
 local framework, scrollHandler
 local counter = 0
